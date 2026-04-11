@@ -1,0 +1,32 @@
+id: common-directory-listing
+
+info:
+  name: Directory Listing Detection
+  description: Detects misconfigured directories with listing enabled
+  severity: medium
+  tags:
+    - common
+    - directory-listing
+    - misconfiguration
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - "/admin/"
+      - "/uploads/"
+      - "/files/"
+      - "/downloads/"
+      - "/assets/"
+      - "/css/"
+      - "/js/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Index of"
+          - "[To Parent Directory]"
+          - "Directory Listing"

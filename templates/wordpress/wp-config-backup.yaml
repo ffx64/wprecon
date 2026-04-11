@@ -1,0 +1,37 @@
+id: wordpress-wp-config-backup
+
+info:
+  name: WordPress Config Backup Exposure
+  description: Detects exposed wp-config.php backup files
+  severity: critical
+  tags:
+    - wordpress
+    - exposure
+    - backup
+    - database-credentials
+
+requests:
+  - method: GET
+    path:
+      - "/wp-config.php.bak"
+      - "/wp-config.php.old"
+      - "/wp-config.php.txt"
+      - "/wp-config.php~"
+      - "/wp-config.backup"
+    
+    matchers:
+      - type: word
+        words:
+          - "DB_NAME"
+          - "DB_PASSWORD"
+          - "DB_USER"
+    
+    extractors:
+      - type: regex
+        name: database_user
+        regex:
+          - "DB_USER.*['\"]([^'\"]+)['\"]"
+      - type: regex
+        name: database_name
+        regex:
+          - "DB_NAME.*['\"]([^'\"]+)['\"]"

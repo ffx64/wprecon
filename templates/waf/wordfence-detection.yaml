@@ -1,0 +1,25 @@
+id: waf-wordfence-detection
+
+info:
+  name: Wordfence Firewall Detection
+  description: Detects WordPress protection by Wordfence security plugin
+  severity: info
+  tags:
+    - waf
+    - wordfence
+    - firewall
+    - wordpress
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/plugins/wordfence/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 403
+      - type: word
+        words:
+          - "wordfence"

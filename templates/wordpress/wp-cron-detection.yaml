@@ -1,0 +1,26 @@
+id: wordpress-wp-cron-dos
+
+info:
+  name: WordPress WP-Cron DoS Detection
+  author: wprecon
+  severity: low
+  description: |
+    WP-Cron is enabled and accessible. When accessed, it triggers scheduled tasks
+    and heavy database queries, which could be abused for DoS amplification attacks.
+  reference:
+    - https://medium.com/@thecpanelguy/the-nightmare-that-is-wpcron-php-ae31c1d3ae30
+    - https://book.hacktricks.wiki/en/network-services-pentesting/pentesting-web/wordpress.html
+  tags:
+    - wordpress
+    - cron
+    - dos
+    - misconfiguration
+
+requests:
+  - method: GET
+    path:
+      - /wp-cron.php
+    matchers:
+      - type: status
+        status:
+          - 200

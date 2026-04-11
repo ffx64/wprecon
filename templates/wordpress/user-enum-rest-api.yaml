@@ -1,0 +1,34 @@
+id: wordpress-user-enumeration-rest-api
+
+info:
+  name: WordPress User Enumeration via REST API
+  description: Enumerates WordPress users via REST API endpoint
+  severity: medium
+  tags:
+    - wordpress
+    - user-enumeration
+    - rest-api
+    - reconnaissance
+    - aggressive
+
+requests:
+  - method: GET
+    path:
+      - "/wp-json/wp/v2/users?per_page=100"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "id"
+          - "username"
+    
+    extractors:
+      - type: json
+        name: users
+        json:
+          - "id"
+          - "username"
+          - "name"

@@ -1,0 +1,49 @@
+id: wordpress-theme-version-detection
+
+info:
+  name: WordPress Popular Themes Detailed Version Detection
+  description: Detects versions of all popular WordPress themes via readme.txt
+  severity: low
+  tags:
+    - wordpress
+    - themes
+    - version
+    - reconnaissance
+    - aggressive
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/themes/astra/readme.txt"
+      - "/wp-content/themes/neve/readme.txt"
+      - "/wp-content/themes/oceanwp/readme.txt"
+      - "/wp-content/themes/generatepress/readme.txt"
+      - "/wp-content/themes/hello-elementor/readme.txt"
+      - "/wp-content/themes/twentytwentyfour/readme.txt"
+      - "/wp-content/themes/twentytwentythree/readme.txt"
+      - "/wp-content/themes/twentytwentytwo/readme.txt"
+      - "/wp-content/themes/twentytwentyone/readme.txt"
+      - "/wp-content/themes/twentytwenty/readme.txt"
+      - "/wp-content/themes/divi/readme.txt"
+      - "/wp-content/themes/avada/readme.txt"
+      - "/wp-content/themes/x/readme.txt"
+      - "/wp-content/themes/betheme/readme.txt"
+      - "/wp-content/themes/shapla/readme.txt"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Stable tag"
+    
+    extractors:
+      - type: regex
+        name: theme_version
+        regex:
+          - "Stable tag: ([0-9.]+)"
+      - type: regex
+        name: theme_name
+        regex:
+          - "=== ([^=]+) ==="

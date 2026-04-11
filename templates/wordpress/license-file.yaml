@@ -1,0 +1,26 @@
+id: wordpress-license-file
+
+info:
+  name: WordPress License File Disclosure
+  author: wprecon
+  severity: info
+  description: |
+    The WordPress license.txt file is publicly accessible, confirming the CMS
+    and potentially leaking version information.
+  tags:
+    - wordpress
+    - information-disclosure
+    - fingerprint
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /license.txt
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - WordPress - Web publishing software

@@ -1,0 +1,39 @@
+id: wordpress-debug-mode-enabled
+
+info:
+  name: WordPress Debug Mode Enabled
+  author: wprecon
+  severity: medium
+  description: |
+    WordPress debug mode (WP_DEBUG) appears to be enabled, causing PHP errors
+    and warnings to be displayed in the page output. This leaks internal paths,
+    file names, and potentially sensitive information.
+  tags:
+    - wordpress
+    - debug
+    - misconfiguration
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - /
+      - /wp-admin/
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Notice:"
+          - "Warning:"
+          - "Deprecated:"
+          - "Fatal error:"
+          - "wp-content"
+        condition: or
+      - type: word
+        words:
+          - ".php on line"
+          - "wp-includes"
+          - "wp-content"
+        condition: or

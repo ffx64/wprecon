@@ -1,0 +1,32 @@
+id: wordpress-meta-generator
+
+info:
+  name: WordPress Version via Meta Generator
+  author: wprecon
+  severity: info
+  description: |
+    The WordPress version is exposed via the meta generator tag in the HTML source.
+    This is the most common method used to fingerprint WordPress version.
+  tags:
+    - wordpress
+    - version
+    - fingerprint
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "generator"
+          - "WordPress"
+    extractors:
+      - type: regex
+        name: wordpress_version
+        regex:
+          - 'content="WordPress ([0-9]+\.[0-9]+\.?[0-9]*)"'

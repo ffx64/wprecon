@@ -1,0 +1,52 @@
+id: wordpress-plugin-version-detection
+
+info:
+  name: WordPress Popular Plugins Detailed Version Detection
+  description: Detects versions of all popular WordPress plugins via readme.txt
+  severity: low
+  tags:
+    - wordpress
+    - plugins
+    - version
+    - reconnaissance
+    - aggressive
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/plugins/akismet/readme.txt"
+      - "/wp-content/plugins/jetpack/readme.txt"
+      - "/wp-content/plugins/yoast-seo/readme.txt"
+      - "/wp-content/plugins/contact-form-7/readme.txt"
+      - "/wp-content/plugins/wordfence/readme.txt"
+      - "/wp-content/plugins/woocommerce/readme.txt"
+      - "/wp-content/plugins/elementor/readme.txt"
+      - "/wp-content/plugins/wordpress-seo/readme.txt"
+      - "/wp-content/plugins/google-analytics-for-wordpress/readme.txt"
+      - "/wp-content/plugins/all-in-one-seo-pack/readme.txt"
+      - "/wp-content/plugins/wp-super-cache/readme.txt"
+      - "/wp-content/plugins/duplicate-post/readme.txt"
+      - "/wp-content/plugins/limit-login-attempts/readme.txt"
+      - "/wp-content/plugins/tinymce-advanced/readme.txt"
+      - "/wp-content/plugins/advanced-custom-fields/readme.txt"
+      - "/wp-content/plugins/acf/readme.txt"
+      - "/wp-content/plugins/ocean-extra/readme.txt"
+      - "/wp-content/plugins/royal-elementor-addons/readme.txt"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Stable tag"
+    
+    extractors:
+      - type: regex
+        name: plugin_version
+        regex:
+          - "Stable tag: ([0-9.]+)"
+      - type: regex
+        name: plugin_name
+        regex:
+          - "=== ([^=]+) ==="

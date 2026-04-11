@@ -1,0 +1,32 @@
+id: wordpress-multisite-detection
+
+info:
+  name: WordPress Multisite Detection
+  author: wprecon
+  severity: info
+  description: |
+    WordPress multisite (network) installation detected. Multisite environments
+    have a larger attack surface with shared plugins, themes, and user databases.
+  tags:
+    - wordpress
+    - multisite
+    - detection
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /wp-signup.php
+      - /wp-activate.php
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - signup_form
+          - wp-activate.php
+          - Create a New Site
+          - Get your own
+          - activation_key
+        condition: or

@@ -1,0 +1,28 @@
+id: wordpress-installation-files
+
+info:
+  name: WordPress Installation Files Exposure
+  description: Detects exposed WordPress installation/setup files
+  severity: high
+  tags:
+    - wordpress
+    - exposure
+    - installation
+    - misconfiguration
+
+requests:
+  - method: GET
+    path:
+      - "/wp-admin/install.php"
+      - "/wp-admin/setup-config.php"
+      - "/wp-admin/admin-ajax.php"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "WordPress"
+          - "install"
+          - "setup"

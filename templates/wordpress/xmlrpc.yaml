@@ -1,0 +1,24 @@
+id: wordpress-xmlrpc
+
+info:
+  name: WordPress XMLRPC Endpoint Detection
+  description: Detects enabled XML-RPC endpoint (can be used for brute force)
+  severity: high
+  tags:
+    - wordpress
+    - xmlrpc
+    - vulnerability
+
+requests:
+  - method: POST
+    path:
+      - "/xmlrpc.php"
+    body: "<?xml version=\"1.0\"?><methodCall><methodName>demo.sayHello</methodName></methodCall>"
+    headers:
+      Content-Type: application/xml
+    
+    matchers:
+      - type: word
+        words:
+          - "XML-RPC server"
+          - "methodResponse"

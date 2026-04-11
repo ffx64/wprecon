@@ -1,0 +1,29 @@
+id: waf-xss-protection
+
+info:
+  name: XSS Protection Detection
+  description: Detects WAF/Firewall XSS (Cross-Site Scripting) protection
+  severity: info
+  tags:
+    - waf
+    - xss
+    - firewall
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/?search=<script>alert('xss')</script>"
+    
+    matchers:
+      - type: status
+        status:
+          - 403
+          - 406
+          - 405
+      - type: word
+        words:
+          - "Forbidden"
+          - "Access Denied"
+          - "blocked"
+          - "Not allowed"

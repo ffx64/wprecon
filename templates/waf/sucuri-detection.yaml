@@ -1,0 +1,31 @@
+id: waf-sucuri-detection
+
+info:
+  name: Sucuri WAF Detection
+  author: wprecon
+  severity: info
+  description: |
+    Detects the presence of Sucuri Web Application Firewall (CloudProxy)
+    protecting the WordPress site.
+  reference:
+    - https://sucuri.net/website-firewall/
+  tags:
+    - waf
+    - sucuri
+    - firewall
+    - wordpress
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /
+    matchers:
+      - type: word
+        words:
+          - sucuri
+          - Sucuri
+          - cloudproxy
+          - X-Sucuri-ID
+          - Sucuri/Cloudproxy
+        condition: or

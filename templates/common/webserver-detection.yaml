@@ -1,0 +1,27 @@
+id: common-webserver-detection
+
+info:
+  name: Web Server Detection
+  description: Detects web server type and version from headers
+  severity: info
+  tags:
+    - common
+    - reconnaissance
+    - web-server
+    - fingerprint
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    
+    matchers:
+      - type: header
+        headers:
+          - Server
+    
+    extractors:
+      - type: regex
+        name: server
+        regex:
+          - "Server: ([^\\r\\n]+)"

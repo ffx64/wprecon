@@ -1,0 +1,62 @@
+id: wordpress-timthumbs
+
+info:
+  name: WordPress Timthumb Detection
+  author: wprecon
+  severity: high
+  description: |
+    Detects vulnerable Timthumb files in common locations.
+    Timthumb is known for critical RCE vulnerabilities (CVE-2011-4106)
+    that allow remote code execution via arbitrary file upload.
+  reference:
+    - https://blog.sucuri.net/2014/06/timthumb-attacks-the-flavor-of-the-month.html
+    - https://nvd.nist.gov/vuln/detail/CVE-2011-4106
+  tags:
+    - wordpress
+    - timthumb
+    - rce
+    - vulnerability
+    - aggressive
+
+requests:
+  - method: GET
+    path:
+      - /timthumb.php
+      - /thumb.php
+      - /lib/timthumb.php
+      - /inc/timthumb.php
+      - /includes/timthumb.php
+      - /wp-content/timthumb.php
+      - /wp-content/thumb.php
+      - /wp-includes/timthumb.php
+      - /wp-content/themes/flavor/timthumb.php
+      - /wp-content/plugins/flavor-starter/timthumb.php
+      - /wp-content/themes/flavor-starter/timthumb.php
+      - /wp-content/plugins/flavor-starter/thumb.php
+      - /wp-content/themes/flavor-starter/thumb.php
+      - /wp-content/plugins/flavor-starter/lib/timthumb.php
+      - /wp-content/themes/flavor-starter/lib/timthumb.php
+      - /wp-content/plugins/flavor starter/timthumb.php
+      - /wp-content/themes/flavor starter/timthumb.php
+      - /wp-content/plugins/flavor starter/thumb.php
+      - /wp-content/themes/flavor starter/thumb.php
+      - /wp-content/plugins/flavor starter/lib/timthumb.php
+      - /wp-content/themes/flavor starter/lib/timthumb.php
+      - /wp-content/plugins/flavor-starter-theme/timthumb.php
+      - /wp-content/themes/flavor-starter-theme/timthumb.php
+      - /wp-content/plugins/flavor-starter-theme/thumb.php
+      - /wp-content/themes/flavor-starter-theme/thumb.php
+      - /wp-content/plugins/flavor-starter-theme/lib/timthumb.php
+      - /wp-content/themes/flavor-starter-theme/lib/timthumb.php
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 400
+      - type: word
+        words:
+          - timthumb
+          - TimThumb
+          - No image specified
+          - query string too long
+        condition: or

@@ -1,0 +1,32 @@
+id: wordpress-oembed-api
+
+info:
+  name: WordPress oEmbed API Detection
+  author: wprecon
+  severity: info
+  description: |
+    The WordPress oEmbed API endpoint is accessible. If not properly secured,
+    it could be leveraged for Server-Side Request Forgery (SSRF) attacks.
+  reference:
+    - https://developer.wordpress.org/plugins/post-types/registering-custom-post-types/
+  tags:
+    - wordpress
+    - oembed
+    - api
+    - ssrf
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /wp-json/oembed/1.0/proxy
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 400
+      - type: word
+        words:
+          - rest_missing_callback_param
+          - oembed
+        condition: or

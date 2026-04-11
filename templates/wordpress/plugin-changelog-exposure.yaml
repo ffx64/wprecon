@@ -1,0 +1,42 @@
+id: wordpress-plugin-changelog-exposure
+
+info:
+  name: WordPress Plugin Changelog Exposure
+  description: Detects exposed CHANGELOG files for plugins showing version history
+  severity: low
+  tags:
+    - wordpress
+    - plugins
+    - changelog
+    - information-disclosure
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/plugins/jetpack/CHANGELOG.md"
+      - "/wp-content/plugins/yoast-seo/CHANGELOG.md"
+      - "/wp-content/plugins/woocommerce/CHANGELOG.md"
+      - "/wp-content/plugins/elementor/CHANGELOG.md"
+      - "/wp-content/plugins/wordfence/CHANGELOG.md"
+      - "/wp-content/plugins/contact-form-7/CHANGELOG.md"
+      - "/wp-content/plugins/akismet/CHANGELOG.md"
+      - "/wp-content/plugins/advanced-custom-fields/CHANGELOG.md"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "##"
+          - "Version"
+          - "Changed"
+          - "Fixed"
+    
+    extractors:
+      - type: regex
+        name: versions_from_changelog
+        regex:
+          - "##\\s+([0-9.]+)"
+          - "^\\s*([0-9.]+)"

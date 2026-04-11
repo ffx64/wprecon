@@ -1,0 +1,52 @@
+id: wordpress-theme-style-version
+
+info:
+  name: WordPress Theme Version via style.css
+  author: wprecon
+  severity: info
+  description: |
+    Extracts the active WordPress theme version from the style.css file header.
+    This is more reliable than readme.txt for theme version fingerprinting.
+  tags:
+    - wordpress
+    - themes
+    - version
+    - fingerprint
+    - reconnaissance
+    - aggressive
+
+requests:
+  - method: GET
+    path:
+      - /wp-content/themes/twentytwentyfour/style.css
+      - /wp-content/themes/twentytwentythree/style.css
+      - /wp-content/themes/twentytwentytwo/style.css
+      - /wp-content/themes/twentytwentyone/style.css
+      - /wp-content/themes/twentytwenty/style.css
+      - /wp-content/themes/twentynineteen/style.css
+      - /wp-content/themes/twentyseventeen/style.css
+      - /wp-content/themes/twentysixteen/style.css
+      - /wp-content/themes/twentyfifteen/style.css
+      - /wp-content/themes/astra/style.css
+      - /wp-content/themes/oceanwp/style.css
+      - /wp-content/themes/generatepress/style.css
+      - /wp-content/themes/hello-elementor/style.css
+      - /wp-content/themes/neve/style.css
+      - /wp-content/themes/kadence/style.css
+      - /wp-content/themes/storefront/style.css
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Theme Name:"
+    extractors:
+      - type: regex
+        name: theme_name
+        regex:
+          - "Theme Name:\\s*(.+)"
+      - type: regex
+        name: theme_version
+        regex:
+          - "Version:\\s*([0-9]+\\.[0-9]+\\.?[0-9]*)"

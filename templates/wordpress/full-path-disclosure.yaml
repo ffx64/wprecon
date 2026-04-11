@@ -1,0 +1,42 @@
+id: wordpress-full-path-disclosure
+
+info:
+  name: WordPress Full Path Disclosure
+  author: wprecon
+  severity: low
+  description: |
+    WordPress exposes the full server file path when certain internal files are accessed
+    directly. This information disclosure can help attackers map the server filesystem.
+  reference:
+    - https://owasp.org/www-community/attacks/Full_Path_Disclosure
+    - https://make.wordpress.org/core/handbook/testing/reporting-security-vulnerabilities/
+  tags:
+    - wordpress
+    - information-disclosure
+    - fpd
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /wp-includes/rss-functions.php
+      - /wp-includes/wp-db.php
+      - /wp-includes/locale.php
+      - /wp-admin/includes/upgrade.php
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Fatal error"
+          - "Call to undefined function"
+          - "failed to open stream"
+          - "Warning:"
+        condition: or
+    extractors:
+      - type: regex
+        name: server_path
+        regex:
+          - "in <b>(/[^<]+)</b>"
+          - "in ([/\\\\][^ :]+\\.php)"

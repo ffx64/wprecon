@@ -1,0 +1,43 @@
+id: wordpress-theme-brute-force
+
+info:
+  name: WordPress Theme Brute Force Detection
+  description: Attempts to brute force common WordPress themes via common paths
+  severity: medium
+  tags:
+    - wordpress
+    - brute-force
+    - themes
+    - reconnaissance
+    - aggressive
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/themes/twentytwentyfour/"
+      - "/wp-content/themes/twentytwentythree/"
+      - "/wp-content/themes/twentytwentytwo/"
+      - "/wp-content/themes/twentytwentyone/"
+      - "/wp-content/themes/twentytwenty/"
+      - "/wp-content/themes/twentynineteen/"
+      - "/wp-content/themes/twentyeighteen/"
+      - "/wp-content/themes/astra/"
+      - "/wp-content/themes/neve/"
+      - "/wp-content/themes/oceanwp/"
+      - "/wp-content/themes/generatepress/"
+      - "/wp-content/themes/hello-elementor/"
+      - "/wp-content/themes/divi/"
+      - "/wp-content/themes/avada/"
+      - "/wp-content/themes/x/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 403
+    
+    extractors:
+      - type: regex
+        name: theme_found
+        regex:
+          - "(/wp-content/themes/[^/]+/)"

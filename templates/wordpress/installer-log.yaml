@@ -1,0 +1,30 @@
+id: wordpress-installer-log
+
+info:
+  name: WordPress Duplicator Installer Log
+  author: wprecon
+  severity: medium
+  description: |
+    An installer log file from the Duplicator plugin is publicly accessible.
+    This file may contain sensitive server paths, database names, and configuration details.
+  reference:
+    - https://wordpress.org/plugins/duplicator/
+  tags:
+    - wordpress
+    - exposure
+    - logs
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - /installer-log.txt
+      - /dup-installer/installer-log.txt
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - DUPLICATOR
+          - INSTALL-LOG

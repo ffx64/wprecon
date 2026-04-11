@@ -1,0 +1,26 @@
+id: wordpress-version
+
+info:
+  name: WordPress Version Detection
+  description: Detects WordPress version from readme.html
+  severity: info
+  tags:
+    - wordpress
+    - fingerprint
+    - version
+
+requests:
+  - method: GET
+    path:
+      - "/readme.html"
+    
+    matchers:
+      - type: word
+        words:
+          - "WordPress"
+    
+    extractors:
+      - type: regex
+        name: version
+        regex:
+          - "Version ([0-9.]+)"

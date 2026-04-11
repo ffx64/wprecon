@@ -1,0 +1,28 @@
+id: git-exposure
+
+info:
+  name: Git Repository Exposure
+  description: Detects exposed .git directory
+  severity: high
+  tags:
+    - exposure
+    - git
+    - configuration
+
+requests:
+  - method: GET
+    path:
+      - "/.git/"
+      - "/.git/config"
+      - "/.git/head"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+    
+    extractors:
+      - type: regex
+        name: git_content
+        regex:
+          - "([\\s\\S]{50})"

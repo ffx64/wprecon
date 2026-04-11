@@ -1,0 +1,25 @@
+id: wordpress-upload-listing
+
+info:
+  name: WordPress Upload Directory Listing
+  description: Detects open directory listing in wp-content/uploads
+  severity: medium
+  tags:
+    - wordpress
+    - directory-listing
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/uploads/"
+    
+    matchers:
+      - type: word
+        words:
+          - "Index of /wp-content/uploads"
+          - "[To Parent Directory]"
+          - "Directory Listing"
+      - type: status
+        status:
+          - 200

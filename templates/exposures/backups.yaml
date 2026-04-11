@@ -1,0 +1,33 @@
+id: backups-exposure
+
+info:
+  name: Common Backup Files Exposure
+  description: Detects common backup files
+  severity: high
+  tags:
+    - exposure
+    - backup
+    - configuration
+
+requests:
+  - method: GET
+    path:
+      - "/backup.zip"
+      - "/backup.tar.gz"
+      - "/database.sql"
+      - "/config.php~"
+      - "/web.config.bak"
+      - "/.env"
+      - "/wp-config.php.bak"
+      - "/wp-config.php~"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+    
+    extractors:
+      - type: regex
+        name: backup_file
+        regex:
+          - "([a-z0-9\\-\\_\\.]+\\.(zip|tar\\.gz|sql|bak|~|env))"

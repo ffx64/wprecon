@@ -1,0 +1,27 @@
+id: common-cookie-analysis
+
+info:
+  name: Cookie Security Analysis
+  description: Analyzes cookies for security flags (HttpOnly, Secure, SameSite)
+  severity: medium
+  tags:
+    - common
+    - cookies
+    - security
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    
+    matchers:
+      - type: header
+        headers:
+          - Set-Cookie
+    
+    extractors:
+      - type: regex
+        name: cookies
+        regex:
+          - "Set-Cookie: ([^;]+)"

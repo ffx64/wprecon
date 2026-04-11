@@ -1,0 +1,45 @@
+id: wordpress-user-enumeration-author-pages
+
+info:
+  name: WordPress User Enumeration via Author Pages
+  description: Enumerates WordPress users by testing author query parameter
+  severity: medium
+  tags:
+    - wordpress
+    - user-enumeration
+    - author-pages
+    - reconnaissance
+    - aggressive
+
+requests:
+  - method: GET
+    path:
+      - "/?author=1"
+      - "/?author=2"
+      - "/?author=3"
+      - "/?author=4"
+      - "/?author=5"
+      - "/?author=6"
+      - "/?author=7"
+      - "/?author=8"
+      - "/?author=9"
+      - "/?author=10"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "author"
+          - "wp-author-"
+    
+    extractors:
+      - type: regex
+        name: author_url
+        regex:
+          - "wp-author-([a-z0-9-]+)"
+      - type: regex
+        name: author_name
+        regex:
+          - "by\\s+<a[^>]*>([^<]+)</a>"

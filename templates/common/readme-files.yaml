@@ -1,0 +1,27 @@
+id: common-readme-files
+
+info:
+  name: Common README Files Detection
+  description: Detects common README, CHANGELOG and documentation files
+  severity: low
+  tags:
+    - generic
+    - information-disclosure
+    - documentation
+
+requests:
+  - method: GET
+    path:
+      - "/README.md"
+      - "/README.txt"
+      - "/CHANGELOG.md"
+      - "/CHANGELOG.txt"
+      - "/LICENSE"
+      - "/LICENSE.md"
+      - "/INSTALL.md"
+      - "/docs/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200

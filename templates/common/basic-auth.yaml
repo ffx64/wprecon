@@ -1,0 +1,26 @@
+id: common-basic-auth
+
+info:
+  name: Basic Authentication Detection
+  description: Detects HTTP Basic Authentication
+  severity: low
+  tags:
+    - common
+    - authentication
+    - http-basic
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/"
+      - "/admin/"
+      - "/api/"
+    
+    matchers:
+      - type: status
+        status:
+          - 401
+      - type: header
+        headers:
+          - WWW-Authenticate

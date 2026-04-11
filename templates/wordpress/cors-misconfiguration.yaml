@@ -1,0 +1,30 @@
+id: wordpress-cors-misconfiguration
+
+info:
+  name: WordPress CORS Misconfiguration
+  author: wprecon
+  severity: medium
+  description: |
+    The WordPress site reflects the Origin header in Access-Control-Allow-Origin,
+    potentially allowing cross-origin data theft from authenticated users.
+  tags:
+    - wordpress
+    - cors
+    - misconfiguration
+    - security
+
+requests:
+  - method: GET
+    path:
+      - /wp-json/wp/v2/posts
+      - /wp-admin/admin-ajax.php
+    headers:
+      Origin: https://evil.example.com
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Access-Control-Allow-Origin: https://evil.example.com"
+          - "Access-Control-Allow-Credentials: true"

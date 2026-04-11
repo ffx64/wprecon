@@ -1,0 +1,31 @@
+id: common-php-info
+
+info:
+  name: PHP Info Exposure
+  description: Detects exposed phpinfo() pages
+  severity: high
+  tags:
+    - common
+    - exposure
+    - php
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - "/phpinfo.php"
+      - "/info.php"
+      - "/php.php"
+      - "/test.php"
+      - "/index.php?info"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "PHP Version"
+          - "phpinfo()"
+          - "System"
+          - "Build Date"

@@ -1,0 +1,30 @@
+id: wordpress-db-repair-exposure
+
+info:
+  name: WordPress Database Repair Page Exposed
+  author: wprecon
+  severity: medium
+  description: |
+    The WordPress database repair page is accessible. If WP_ALLOW_REPAIR is defined
+    as true in wp-config.php, this page allows unauthenticated database repair
+    and optimization, which can cause DoS or data corruption.
+  reference:
+    - https://developer.wordpress.org/advanced-administration/upgrade/upgrading-older-versions/
+  tags:
+    - wordpress
+    - database
+    - misconfiguration
+    - exposure
+
+requests:
+  - method: GET
+    path:
+      - /wp-admin/maint/repair.php
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "<title>WordPress"
+          - "repair"

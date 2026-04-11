@@ -1,0 +1,38 @@
+id: exposure-env-files
+
+info:
+  name: Environment Files Exposure
+  description: Detects exposed .env, .env.local and other environment configuration files
+  severity: critical
+  tags:
+    - exposure
+    - environment
+    - credentials
+    - configuration
+
+requests:
+  - method: GET
+    path:
+      - "/.env"
+      - "/.env.local"
+      - "/.env.development"
+      - "/.env.production"
+      - "/.env.staging"
+      - "/.env.example"
+    
+    matchers:
+      - type: word
+        words:
+          - "="
+          - "SECRET"
+          - "PASSWORD"
+          - "KEY"
+      - type: status
+        status:
+          - 200
+    
+    extractors:
+      - type: regex
+        name: env_vars
+        regex:
+          - "([A-Z_]+)=(.+)"

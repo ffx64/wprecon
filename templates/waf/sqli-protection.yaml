@@ -1,0 +1,29 @@
+id: waf-sqli-protection
+
+info:
+  name: SQL Injection Protection Detection
+  description: Detects WAF/Firewall SQL Injection protection mechanisms
+  severity: info
+  tags:
+    - waf
+    - sql-injection
+    - firewall
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/?id=1' OR '1'='1"
+    
+    matchers:
+      - type: status
+        status:
+          - 403
+          - 406
+          - 405
+      - type: word
+        words:
+          - "Forbidden"
+          - "Access Denied"
+          - "blocked"
+          - "Not allowed"

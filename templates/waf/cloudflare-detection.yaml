@@ -1,0 +1,31 @@
+id: waf-cloudflare-detection
+
+info:
+  name: Cloudflare WAF Detection
+  description: Detects if target is protected by Cloudflare WAF
+  severity: info
+  tags:
+    - waf
+    - cloudflare
+    - firewall
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    
+    matchers:
+      - type: header
+        headers:
+          - Server
+      - type: word
+        words:
+          - "cloudflare"
+          - "CF-"
+    
+    extractors:
+      - type: regex
+        name: cloudflare_headers
+        regex:
+          - "CF-[A-Z-]+: ([^\\r\\n]+)"

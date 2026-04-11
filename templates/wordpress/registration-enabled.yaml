@@ -1,0 +1,35 @@
+id: wordpress-registration-enabled
+
+info:
+  name: WordPress User Registration Enabled
+  author: wprecon
+  severity: info
+  description: |
+    WordPress user registration is enabled. This allows anyone to create an account
+    on the WordPress site, which could be leveraged for further attacks if role
+    assignment is misconfigured.
+  reference:
+    - https://wpscan.com/
+  tags:
+    - wordpress
+    - registration
+    - misconfiguration
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /wp-login.php?action=register
+      - /wp-signup.php
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - registerform
+          - register_form
+          - Register For This Site
+          - signup-form
+          - signup_form
+        condition: or

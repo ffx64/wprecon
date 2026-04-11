@@ -1,0 +1,35 @@
+id: exposure-human-readable-errors
+
+info:
+  name: Human Readable Errors
+  description: Detects sensitive information in error messages
+  severity: medium
+  tags:
+    - exposure
+    - error-disclosure
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - "/admin"
+      - "/wp-admin"
+      - "/api"
+      - "/config"
+      - "/settings"
+    
+    matchers:
+      - type: word
+        words:
+          - "Exception"
+          - "Error:"
+          - "Fatal error"
+          - "Warning:"
+          - "SQL error"
+          - "Database error"
+          - "syntax error"
+      - type: status
+        status:
+          - 200
+          - 500
+          - 403

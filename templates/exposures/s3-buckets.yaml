@@ -1,0 +1,27 @@
+id: exposure-aws-s3-bucket
+
+info:
+  name: AWS S3 Bucket Detection
+  description: Detects references to AWS S3 buckets in HTML/JavaScript
+  severity: medium
+  tags:
+    - exposure
+    - s3
+    - aws
+    - misconfiguration
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    
+    matchers:
+      - type: regex
+        regex:
+          - "(s3[a-zA-Z0-9-]*\\.amazonaws\\.com|https://[a-z0-9.-]*\\.s3[a-z0-9.-]*\\.amazonaws\\.com)"
+    
+    extractors:
+      - type: regex
+        name: s3_buckets
+        regex:
+          - "(s3[a-zA-Z0-9-]*\\.amazonaws\\.com|https://([a-z0-9.-]*)\\.s3[a-z0-9.-]*\\.amazonaws\\.com)"

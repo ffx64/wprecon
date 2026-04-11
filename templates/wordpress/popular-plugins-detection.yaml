@@ -1,0 +1,37 @@
+id: wordpress-popular-plugins
+
+info:
+  name: WordPress Popular Plugins Detection
+  description: Detects popular WordPress plugins by checking for specific files and indicators
+  severity: low
+  tags:
+    - wordpress
+    - plugins
+    - reconnaissance
+    - fingerprint
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/plugins/akismet/readme.txt"
+      - "/wp-content/plugins/jetpack/readme.txt"
+      - "/wp-content/plugins/yoast-seo/readme.txt"
+      - "/wp-content/plugins/contact-form-7/readme.txt"
+      - "/wp-content/plugins/wordfence/readme.txt"
+      - "/wp-content/plugins/woocommerce/readme.txt"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Stable tag"
+          - "Version"
+    
+    extractors:
+      - type: regex
+        name: plugin_version
+        regex:
+          - "Stable tag: ([0-9.]+)"
+          - "Version: ([0-9.]+)"

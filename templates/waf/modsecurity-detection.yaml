@@ -1,0 +1,28 @@
+id: waf-modsecurity-detection
+
+info:
+  name: ModSecurity WAF Detection
+  description: Detects if target is protected by ModSecurity WAF
+  severity: info
+  tags:
+    - waf
+    - modsecurity
+    - firewall
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    body: "<script>alert('test')</script>"
+    
+    matchers:
+      - type: status
+        status:
+          - 403
+          - 406
+      - type: word
+        words:
+          - "ModSecurity"
+          - "You don't have permission"
+          - "Access Denied"

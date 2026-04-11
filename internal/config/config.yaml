@@ -1,5 +1,0 @@
-application:
-    name:        wprecon
-    version:     v2.4.5
-    author:      blackcrw
-    description: WPRecon, is a tool for the recognition of vulnerabilities and blackbox information for wordpress.

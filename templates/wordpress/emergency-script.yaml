@@ -1,0 +1,30 @@
+id: wordpress-emergency-script
+
+info:
+  name: WordPress Emergency Password Reset Script
+  author: wprecon
+  severity: high
+  description: |
+    The WordPress emergency password reset script (emergency.php) is accessible.
+    This allows an attacker to reset the WordPress administrator password
+    without authentication.
+  reference:
+    - https://wordpress.org/support/article/resetting-your-password/#using-the-emergency-password-reset-script
+  tags:
+    - wordpress
+    - exposure
+    - password-reset
+    - critical
+
+requests:
+  - method: GET
+    path:
+      - /emergency.php
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - WordPress Administrator
+          - Update Options

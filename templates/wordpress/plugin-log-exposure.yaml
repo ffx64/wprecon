@@ -1,0 +1,42 @@
+id: wordpress-plugin-log-exposure
+
+info:
+  name: WordPress Plugin Log File Exposure
+  author: wprecon
+  severity: medium
+  description: |
+    Debug or error log files from popular WordPress plugins are publicly accessible.
+    These logs may contain sensitive information including file paths, database errors,
+    user data, and API keys.
+  tags:
+    - wordpress
+    - plugins
+    - logs
+    - exposure
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - /wp-content/debug.log
+      - /wp-content/uploads/wc-logs/
+      - /wp-content/uploads/sucuri/
+      - /wp-content/uploads/affwp-debug.log
+      - /wp-content/uploads/mailchimp-for-wp/debug-log.php
+      - /wp-content/uploads/gravity_forms/logs/
+      - /wp-content/uploads/wp-file-manager-pro/fm_backup/
+      - /wp-content/ai1wm-backups/
+      - /wp-content/updraft/
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "PHP Warning"
+          - "PHP Error"
+          - "Index of"
+          - "debug"
+          - "error"
+          - "log"
+        condition: or

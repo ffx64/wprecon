@@ -1,0 +1,33 @@
+id: wordpress-media-listing
+
+info:
+  name: WordPress Media Upload Enumeration
+  author: wprecon
+  severity: low
+  description: |
+    WordPress upload directories are listable by year/month, allowing enumeration
+    of uploaded media files, documents, and potentially sensitive attachments.
+  tags:
+    - wordpress
+    - media
+    - directory-listing
+    - information-disclosure
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /wp-content/uploads/2024/
+      - /wp-content/uploads/2025/
+      - /wp-content/uploads/2026/
+      - /wp-content/uploads/2023/
+      - /wp-content/uploads/2022/
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Index of"
+          - "Parent Directory"
+        condition: or

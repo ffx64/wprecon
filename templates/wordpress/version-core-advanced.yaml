@@ -1,0 +1,33 @@
+id: wordpress-version-core-detection
+
+info:
+  name: WordPress Core Version Detection (Advanced)
+  description: Detects WordPress version from multiple sources
+  severity: info
+  tags:
+    - wordpress
+    - version
+    - fingerprint
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/readme.html"
+      - "/wp-includes/version.php"
+    
+    matchers:
+      - type: word
+        words:
+          - "WordPress"
+          - "Version"
+      - type: status
+        status:
+          - 200
+    
+    extractors:
+      - type: regex
+        name: wordpress_version
+        regex:
+          - "Version ([0-9.]+)"
+          - "\\$wp_version = '([0-9.]+)'"

@@ -1,0 +1,37 @@
+id: wordpress-popular-themes
+
+info:
+  name: WordPress Popular Themes Detection
+  description: Detects popular WordPress themes by checking for specific files and version info
+  severity: low
+  tags:
+    - wordpress
+    - themes
+    - reconnaissance
+    - fingerprint
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/themes/astra/readme.txt"
+      - "/wp-content/themes/neve/readme.txt"
+      - "/wp-content/themes/oceanwp/readme.txt"
+      - "/wp-content/themes/generatepress/readme.txt"
+      - "/wp-content/themes/hello-elementor/readme.txt"
+      - "/wp-content/themes/twentytwentyfour/readme.txt"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "Stable tag"
+          - "Version"
+    
+    extractors:
+      - type: regex
+        name: theme_version
+        regex:
+          - "Stable tag: ([0-9.]+)"
+          - "Version: ([0-9.]+)"

@@ -1,0 +1,31 @@
+id: wordpress-rest-api-detection
+
+info:
+  name: WordPress REST API Detection
+  description: Detects enabled WordPress REST API and lists available endpoints
+  severity: medium
+  tags:
+    - wordpress
+    - rest-api
+    - detection
+
+requests:
+  - method: GET
+    path:
+      - "/wp-json/"
+      - "/wp-json/wp/v2/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "namespaces"
+          - "wp/v2"
+    
+    extractors:
+      - type: json
+        name: endpoints
+        json:
+          - "namespaces"

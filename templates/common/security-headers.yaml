@@ -1,0 +1,30 @@
+id: common-security-headers
+
+info:
+  name: Security Headers Analysis
+  description: Checks for missing security headers
+  severity: medium
+  tags:
+    - common
+    - security
+    - headers
+    - misconfiguration
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    
+    matchers:
+      - type: word
+        negative: true
+        words:
+          - "X-Frame-Options"
+          - "Content-Security-Policy"
+          - "X-Content-Type-Options"
+    
+    extractors:
+      - type: regex
+        name: headers
+        regex:
+          - "X-[\\w-]+: ([^\\r\\n]+)"

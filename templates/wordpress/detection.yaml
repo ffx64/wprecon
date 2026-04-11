@@ -1,0 +1,24 @@
+id: wordpress-detection
+
+info:
+  name: WordPress Installation Detection
+  description: Detects if target is running WordPress
+  severity: info
+  tags:
+    - wordpress
+    - fingerprint
+    - detection
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/"
+      - "/wp-admin/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 301
+          - 302
+          - 403

@@ -1,0 +1,28 @@
+id: waf-rate-limiting-detection
+
+info:
+  name: Rate Limiting / Throttling Detection
+  description: Detects rate limiting or throttling responses from WAF/Firewall
+  severity: info
+  tags:
+    - waf
+    - rate-limiting
+    - firewall
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    
+    matchers:
+      - type: status
+        status:
+          - 429
+          - 503
+      - type: word
+        words:
+          - "Too Many Requests"
+          - "Rate Limit"
+          - "Service Unavailable"
+          - "Please retry later"

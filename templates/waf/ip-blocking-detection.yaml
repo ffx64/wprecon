@@ -1,0 +1,32 @@
+id: waf-ip-blocking-detection
+
+info:
+  name: IP Blocking Detection
+  description: Detects if requests are being blocked by IP-based WAF/Firewall rules
+  severity: info
+  tags:
+    - waf
+    - ip-blocking
+    - firewall
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    headers:
+      User-Agent: "curl/7.0"
+      X-Forwarded-For: "192.168.1.1"
+    
+    matchers:
+      - type: status
+        status:
+          - 403
+          - 401
+          - 405
+      - type: word
+        words:
+          - "Forbidden"
+          - "Access Denied"
+          - "IP blocked"
+          - "Not Allowed"

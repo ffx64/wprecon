@@ -1,0 +1,33 @@
+id: wordpress-debug-log
+
+info:
+  name: WordPress Debug Log Exposure
+  description: Detects exposed debug.log with sensitive information
+  severity: high
+  tags:
+    - wordpress
+    - exposure
+    - debug
+    - logs
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/debug.log"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "PHP Warning"
+          - "PHP Notice"
+          - "PHP Error"
+          - "Fatal error"
+    
+    extractors:
+      - type: regex
+        name: error_count
+        regex:
+          - "\\[(.*?)\\]"

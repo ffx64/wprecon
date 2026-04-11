@@ -1,0 +1,27 @@
+id: wordpress-wp-login-enumeration
+
+info:
+  name: WordPress User Enumeration via Login
+  description: Attempts to enumerate WordPress users through login page behavior
+  severity: low
+  tags:
+    - wordpress
+    - user-enumeration
+    - information-disclosure
+
+requests:
+  - method: POST
+    path:
+      - "/wp-login.php"
+    body: "log=admin&pwd=invalid&wp-submit=Log+In"
+    headers:
+      Content-Type: application/x-www-form-urlencoded
+    
+    matchers:
+      - type: word
+        words:
+          - "wp-submit"
+          - "wp-login"
+      - type: status
+        status:
+          - 200

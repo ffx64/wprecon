@@ -1,0 +1,50 @@
+id: wordpress-database-dump
+
+info:
+  name: WordPress Database Dump Exposure
+  description: Detects exposed database backup or dump files
+  severity: critical
+  tags:
+    - wordpress
+    - exposure
+    - database
+    - backup
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/backup.sql"
+      - "/backup.sql"
+      - "/db.sql"
+      - "/wordpress.sql"
+      - "/dump.sql"
+      - "/wp-content/backups/latest.sql"
+      - "/wp-content/mysql.sql"
+      - "/wp-content/db-backup.sql"
+      - "/wp-content/backup-db/"
+      - "/wp-content/backups/"
+      - "/database.sql"
+      - "/database.sql.gz"
+      - "/backup.sql.gz"
+      - "/backup.sql.zip"
+      - "/wp-content/uploads/backupbuddy_backups/"
+      - "/wp-content/uploads/backwpup-*-backups/"
+      - "/wp-content/updraft/"
+      - "/wp-content/ai1wm-backups/"
+      - "/wp-snapshots/"
+    
+    matchers:
+      - type: word
+        words:
+          - "INSERT INTO"
+          - "CREATE TABLE"
+          - "mysql"
+      - type: status
+        status:
+          - 200
+    
+    extractors:
+      - type: regex
+        name: table_count
+        regex:
+          - "CREATE TABLE.*"

@@ -1,0 +1,45 @@
+id: wordpress-wp-config-accessible
+
+info:
+  name: WordPress wp-config.php Accessible
+  author: wprecon
+  severity: critical
+  description: |
+    The WordPress wp-config.php file or a variant is accessible and leaking
+    database credentials. This is a critical exposure that can lead to full
+    database compromise.
+  reference:
+    - https://developer.wordpress.org/advanced-administration/wordpress/wp-config/
+  tags:
+    - wordpress
+    - exposure
+    - credentials
+    - critical
+    - backup
+
+requests:
+  - method: GET
+    path:
+      - /wp-config.php
+      - /wp-config.inc
+      - /wp-config.old
+      - /wp-config.txt
+      - /wp-config.php.txt
+      - /wp-config.php.dist
+      - /wp-config.php.save
+      - /wp-config.php.orig
+      - /wp-config.php.original
+      - /wp-config.php.swp
+      - /wp-config-sample.php
+      - /wp-config.backup
+      - /wp-config.php-backup
+      - /.wp-config.php.swp
+      - /wp-config.php.html
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - DB_NAME
+          - DB_PASSWORD

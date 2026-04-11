@@ -1,0 +1,33 @@
+id: common-sitemap-xml
+
+info:
+  name: Sitemap.xml Discovery
+  description: Discovers sitemap.xml and enumerates URLs
+  severity: low
+  tags:
+    - common
+    - reconnaissance
+    - seo
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - "/sitemap.xml"
+      - "/sitemap_index.xml"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "<?xml"
+          - "<url>"
+          - "<loc>"
+    
+    extractors:
+      - type: regex
+        name: urls
+        regex:
+          - "<loc>(.*?)</loc>"

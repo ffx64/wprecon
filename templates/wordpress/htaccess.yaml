@@ -1,0 +1,26 @@
+id: wordpress-htaccess-exposure
+
+info:
+  name: WordPress .htaccess Exposure
+  description: Detects exposed .htaccess configuration file
+  severity: medium
+  tags:
+    - wordpress
+    - exposure
+    - configuration
+    - htaccess
+
+requests:
+  - method: GET
+    path:
+      - "/.htaccess"
+    
+    matchers:
+      - type: word
+        words:
+          - "RewriteEngine"
+          - "RewriteRule"
+          - "RewriteCond"
+      - type: status
+        status:
+          - 200

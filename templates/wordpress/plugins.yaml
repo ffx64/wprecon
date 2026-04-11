@@ -1,0 +1,33 @@
+id: wordpress-plugins
+
+info:
+  name: WordPress Popular Plugins Detection
+  description: Detects popular WordPress plugins
+  severity: low
+  tags:
+    - wordpress
+    - plugins
+    - fingerprint
+
+requests:
+  - method: GET
+    path:
+      - "/wp-content/plugins/elementor/"
+      - "/wp-content/plugins/akismet/"
+      - "/wp-content/plugins/jetpack/"
+      - "/wp-content/plugins/yoast-seo/"
+      - "/wp-content/plugins/woocommerce/"
+      - "/wp-content/plugins/contact-form-7/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 301
+          - 302
+    
+    extractors:
+      - type: regex
+        name: plugin
+        regex:
+          - "/wp-content/plugins/([a-z0-9\\-]+)/"

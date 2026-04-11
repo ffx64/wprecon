@@ -1,0 +1,31 @@
+id: waf-aws-waf-detection
+
+info:
+  name: AWS WAF Detection
+  description: Detects if target is protected by AWS WAF
+  severity: info
+  tags:
+    - waf
+    - aws
+    - firewall
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    
+    matchers:
+      - type: header
+        headers:
+          - Server
+      - type: word
+        words:
+          - "X-Amzn-RequestId"
+          - "X-Amzn"
+    
+    extractors:
+      - type: regex
+        name: aws_headers
+        regex:
+          - "X-Amzn-[\\w-]+: ([^\\r\\n]+)"

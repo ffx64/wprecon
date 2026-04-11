@@ -1,0 +1,45 @@
+id: wordpress-xmlrpc-listmethods
+
+info:
+  name: WordPress XMLRPC List Methods
+  author: wprecon
+  severity: medium
+  description: |
+    The WordPress XMLRPC endpoint responds to system.listMethods calls, revealing
+    all available XML-RPC methods. This can expose dangerous methods like
+    system.multicall (used for brute-force amplification) and pingback.ping (SSRF).
+  reference:
+    - https://the-bilal-rizwan.medium.com/wordpress-xmlrpc-php-common-vulnerabilites-how-to-exploit-them-d8d3c8600b32
+  tags:
+    - wordpress
+    - xmlrpc
+    - enumeration
+    - reconnaissance
+
+requests:
+  - method: POST
+    path:
+      - /xmlrpc.php
+    headers:
+      Content-Type: text/xml
+    body: |
+      <?xml version="1.0" encoding="utf-8"?>
+      <methodCall>
+        <methodName>system.listMethods</methodName>
+        <params></params>
+      </methodCall>
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - system.multicall
+          - system.listMethods
+    extractors:
+      - type: regex
+        name: xmlrpc_methods
+        regex:
+          - "<string>(pingback\\.ping)</string>"
+          - "<string>(system\\.multicall)</string>"
+          - "<string>(wp\\.getUsersBlogs)</string>"

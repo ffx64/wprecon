@@ -1,0 +1,21 @@
+id: wordpress-admin-detection
+
+info:
+  name: WordPress Admin Panel Detection
+  description: Detects WordPress admin panel at wp-admin
+  severity: info
+  tags:
+    - wordpress
+    - admin
+    - fingerprint
+
+requests:
+  - method: GET
+    path:
+      - "/wp-admin/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+          - 302

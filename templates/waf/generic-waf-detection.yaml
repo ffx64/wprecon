@@ -1,0 +1,31 @@
+id: waf-generic-detection
+
+info:
+  name: Generic WAF Detection
+  description: Detects common WAF/Firewall solutions and rate limiting
+  severity: info
+  tags:
+    - waf
+    - firewall
+    - reconnaissance
+    - generic
+
+requests:
+  - method: GET
+    path:
+      - "/"
+    
+    matchers:
+      - type: header
+        negative: true
+        headers:
+          - Server
+      - type: word
+        words:
+          - "Fortinet"
+          - "Palo Alto"
+          - "Check Point"
+          - "Barracuda"
+          - "F5"
+          - "Imperva"
+          - "SecureWorks"

@@ -1,0 +1,39 @@
+id: wordpress-user-enumeration-rss
+
+info:
+  name: WordPress User Enumeration via RSS Feed
+  description: Enumerates WordPress users from RSS feed author tags
+  severity: medium
+  tags:
+    - wordpress
+    - user-enumeration
+    - rss
+    - reconnaissance
+    - aggressive
+
+requests:
+  - method: GET
+    path:
+      - "/feed/"
+      - "/index.php/feed/"
+      - "/rss/"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "<?xml"
+          - "<creator>"
+          - "author"
+    
+    extractors:
+      - type: regex
+        name: authors_from_rss
+        regex:
+          - "<creator>([^<]+)</creator>"
+      - type: regex
+        name: author_email
+        regex:
+          - "<author>([^<]+)</author>"

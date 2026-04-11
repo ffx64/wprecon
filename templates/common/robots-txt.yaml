@@ -1,0 +1,32 @@
+id: common-robots-txt
+
+info:
+  name: Robots.txt Discovery
+  description: Discovers robots.txt and identifies paths
+  severity: low
+  tags:
+    - common
+    - reconnaissance
+    - seo
+    - information-disclosure
+
+requests:
+  - method: GET
+    path:
+      - "/robots.txt"
+    
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "User-agent"
+          - "Disallow"
+          - "Allow"
+    
+    extractors:
+      - type: regex
+        name: disallowed_paths
+        regex:
+          - "Disallow: (.*)"

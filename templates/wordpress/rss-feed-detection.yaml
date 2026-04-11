@@ -1,0 +1,41 @@
+id: wordpress-rss-feed-detection
+
+info:
+  name: WordPress RSS/Atom Feed Detection
+  author: wprecon
+  severity: info
+  description: |
+    WordPress RSS and Atom feeds are accessible. These can leak post content,
+    author information, and WordPress version via the generator tag.
+  tags:
+    - wordpress
+    - rss
+    - feed
+    - fingerprint
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - /feed/
+      - /feed/atom/
+      - /comments/feed/
+    matchers:
+      - type: status
+        status:
+          - 200
+      - type: word
+        words:
+          - "<rss"
+          - "<feed"
+          - "wordpress"
+        condition: or
+    extractors:
+      - type: regex
+        name: wp_version
+        regex:
+          - "generator>https?://wordpress\\.org/\\?v=([0-9.]+)<"
+      - type: regex
+        name: site_title
+        regex:
+          - "<title>([^<]+)</title>"

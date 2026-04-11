@@ -1,0 +1,29 @@
+id: waf-lfi-protection
+
+info:
+  name: LFI Protection Detection
+  description: Detects WAF/Firewall Local File Inclusion protection
+  severity: info
+  tags:
+    - waf
+    - lfi
+    - firewall
+    - reconnaissance
+
+requests:
+  - method: GET
+    path:
+      - "/?file=../../../etc/passwd"
+    
+    matchers:
+      - type: status
+        status:
+          - 403
+          - 406
+          - 405
+      - type: word
+        words:
+          - "Forbidden"
+          - "Access Denied"
+          - "blocked"
+          - "Not allowed"
