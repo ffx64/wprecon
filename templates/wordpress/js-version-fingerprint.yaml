@@ -2,7 +2,7 @@ id: wordpress-js-version-fingerprint
 
 info:
   name: WordPress Version via JS/CSS Fingerprinting
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     WordPress version can be extracted from the version query parameters appended

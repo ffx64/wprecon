@@ -2,7 +2,7 @@ id: wordpress-plugin-log-exposure
 
 info:
   name: WordPress Plugin Log File Exposure
-  author: wprecon
+  author: ffx64
   severity: medium
   description: |
     Debug or error log files from popular WordPress plugins are publicly accessible.

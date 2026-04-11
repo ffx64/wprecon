@@ -2,7 +2,7 @@ id: wordpress-oembed-api
 
 info:
   name: WordPress oEmbed API Detection
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     The WordPress oEmbed API endpoint is accessible. If not properly secured,

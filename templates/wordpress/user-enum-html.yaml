@@ -2,6 +2,7 @@ id: wordpress-user-enumeration-comments
 
 info:
   name: WordPress User Enumeration via Comments
+  author: ffx64
   description: Enumerates WordPress users from HTML comments and author metadata
   severity: medium
   tags:

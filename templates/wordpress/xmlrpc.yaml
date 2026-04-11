@@ -2,6 +2,7 @@ id: wordpress-xmlrpc
 
 info:
   name: WordPress XMLRPC Endpoint Detection
+  author: ffx64
   description: Detects enabled XML-RPC endpoint (can be used for brute force)
   severity: high
   tags:

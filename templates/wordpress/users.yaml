@@ -2,6 +2,7 @@ id: wordpress-users-api
 
 info:
   name: WordPress Users REST API
+  author: ffx64
   description: Enumerates WordPress users via REST API
   severity: low
   tags:

@@ -2,6 +2,7 @@ id: wordpress-plugin-changelog-exposure
 
 info:
   name: WordPress Plugin Changelog Exposure
+  author: ffx64
   description: Detects exposed CHANGELOG files for plugins showing version history
   severity: low
   tags:

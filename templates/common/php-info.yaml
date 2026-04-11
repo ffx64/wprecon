@@ -2,6 +2,7 @@ id: common-php-info
 
 info:
   name: PHP Info Exposure
+  author: ffx64
   description: Detects exposed phpinfo() pages
   severity: high
   tags:

@@ -2,6 +2,7 @@ id: waf-aws-waf-detection
 
 info:
   name: AWS WAF Detection
+  author: ffx64
   description: Detects if target is protected by AWS WAF
   severity: info
   tags:

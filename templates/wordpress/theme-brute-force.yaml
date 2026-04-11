@@ -2,6 +2,7 @@ id: wordpress-theme-brute-force
 
 info:
   name: WordPress Theme Brute Force Detection
+  author: ffx64
   description: Attempts to brute force common WordPress themes via common paths
   severity: medium
   tags:

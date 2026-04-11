@@ -2,6 +2,7 @@ id: wordpress-upload-listing
 
 info:
   name: WordPress Upload Directory Listing
+  author: ffx64
   description: Detects open directory listing in wp-content/uploads
   severity: medium
   tags:

@@ -2,6 +2,7 @@ id: wordpress-user-enumeration-rss
 
 info:
   name: WordPress User Enumeration via RSS Feed
+  author: ffx64
   description: Enumerates WordPress users from RSS feed author tags
   severity: medium
   tags:

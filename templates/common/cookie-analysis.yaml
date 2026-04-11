@@ -2,6 +2,7 @@ id: common-cookie-analysis
 
 info:
   name: Cookie Security Analysis
+  author: ffx64
   description: Analyzes cookies for security flags (HttpOnly, Secure, SameSite)
   severity: medium
   tags:

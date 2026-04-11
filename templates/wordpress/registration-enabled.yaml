@@ -2,7 +2,7 @@ id: wordpress-registration-enabled
 
 info:
   name: WordPress User Registration Enabled
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     WordPress user registration is enabled. This allows anyone to create an account

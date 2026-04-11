@@ -2,6 +2,7 @@ id: common-readme-files
 
 info:
   name: Common README Files Detection
+  author: ffx64
   description: Detects common README, CHANGELOG and documentation files
   severity: low
   tags:

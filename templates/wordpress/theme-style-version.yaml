@@ -2,7 +2,7 @@ id: wordpress-theme-style-version
 
 info:
   name: WordPress Theme Version via style.css
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     Extracts the active WordPress theme version from the style.css file header.

@@ -2,7 +2,7 @@ id: wordpress-cors-misconfiguration
 
 info:
   name: WordPress CORS Misconfiguration
-  author: wprecon
+  author: ffx64
   severity: medium
   description: |
     The WordPress site reflects the Origin header in Access-Control-Allow-Origin,

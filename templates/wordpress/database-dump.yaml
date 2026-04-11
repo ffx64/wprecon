@@ -2,6 +2,7 @@ id: wordpress-database-dump
 
 info:
   name: WordPress Database Dump Exposure
+  author: ffx64
   description: Detects exposed database backup or dump files
   severity: critical
   tags:

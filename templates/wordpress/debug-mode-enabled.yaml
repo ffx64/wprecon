@@ -2,7 +2,7 @@ id: wordpress-debug-mode-enabled
 
 info:
   name: WordPress Debug Mode Enabled
-  author: wprecon
+  author: ffx64
   severity: medium
   description: |
     WordPress debug mode (WP_DEBUG) appears to be enabled, causing PHP errors

@@ -2,6 +2,7 @@ id: wordpress-installation-files
 
 info:
   name: WordPress Installation Files Exposure
+  author: ffx64
   description: Detects exposed WordPress installation/setup files
   severity: high
   tags:

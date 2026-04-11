@@ -2,6 +2,7 @@ id: wordpress-wp-login-enumeration
 
 info:
   name: WordPress User Enumeration via Login
+  author: ffx64
   description: Attempts to enumerate WordPress users through login page behavior
   severity: low
   tags:

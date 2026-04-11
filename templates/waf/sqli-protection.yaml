@@ -2,6 +2,7 @@ id: waf-sqli-protection
 
 info:
   name: SQL Injection Protection Detection
+  author: ffx64
   description: Detects WAF/Firewall SQL Injection protection mechanisms
   severity: info
   tags:

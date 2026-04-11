@@ -2,6 +2,7 @@ id: wordpress-rest-api-detection
 
 info:
   name: WordPress REST API Detection
+  author: ffx64
   description: Detects enabled WordPress REST API and lists available endpoints
   severity: medium
   tags:

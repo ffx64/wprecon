@@ -2,7 +2,7 @@ id: wordpress-license-file
 
 info:
   name: WordPress License File Disclosure
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     The WordPress license.txt file is publicly accessible, confirming the CMS

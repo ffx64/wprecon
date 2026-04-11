@@ -2,6 +2,7 @@ id: wordpress-theme-version-detection
 
 info:
   name: WordPress Popular Themes Detailed Version Detection
+  author: ffx64
   description: Detects versions of all popular WordPress themes via readme.txt
   severity: low
   tags:

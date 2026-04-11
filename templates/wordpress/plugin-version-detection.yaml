@@ -2,6 +2,7 @@ id: wordpress-plugin-version-detection
 
 info:
   name: WordPress Popular Plugins Detailed Version Detection
+  author: ffx64
   description: Detects versions of all popular WordPress plugins via readme.txt
   severity: low
   tags:

@@ -2,6 +2,7 @@ id: exposure-env-files
 
 info:
   name: Environment Files Exposure
+  author: ffx64
   description: Detects exposed .env, .env.local and other environment configuration files
   severity: critical
   tags:

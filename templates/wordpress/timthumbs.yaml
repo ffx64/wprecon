@@ -2,7 +2,7 @@ id: wordpress-timthumbs
 
 info:
   name: WordPress Timthumb Detection
-  author: wprecon
+  author: ffx64
   severity: high
   description: |
     Detects vulnerable Timthumb files in common locations.

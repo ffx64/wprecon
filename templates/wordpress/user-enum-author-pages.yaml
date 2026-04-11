@@ -2,6 +2,7 @@ id: wordpress-user-enumeration-author-pages
 
 info:
   name: WordPress User Enumeration via Author Pages
+  author: ffx64
   description: Enumerates WordPress users by testing author query parameter
   severity: medium
   tags:

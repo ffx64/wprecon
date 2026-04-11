@@ -2,6 +2,7 @@ id: wordpress-debug-log
 
 info:
   name: WordPress Debug Log Exposure
+  author: ffx64
   description: Detects exposed debug.log with sensitive information
   severity: high
   tags:

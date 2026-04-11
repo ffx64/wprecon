@@ -2,7 +2,7 @@ id: wordpress-media-listing
 
 info:
   name: WordPress Media Upload Enumeration
-  author: wprecon
+  author: ffx64
   severity: low
   description: |
     WordPress upload directories are listable by year/month, allowing enumeration

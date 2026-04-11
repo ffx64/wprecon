@@ -2,6 +2,7 @@ id: common-directory-listing
 
 info:
   name: Directory Listing Detection
+  author: ffx64
   description: Detects misconfigured directories with listing enabled
   severity: medium
   tags:

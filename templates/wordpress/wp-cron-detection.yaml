@@ -2,7 +2,7 @@ id: wordpress-wp-cron-dos
 
 info:
   name: WordPress WP-Cron DoS Detection
-  author: wprecon
+  author: ffx64
   severity: low
   description: |
     WP-Cron is enabled and accessible. When accessed, it triggers scheduled tasks

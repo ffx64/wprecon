@@ -2,7 +2,7 @@ id: wordpress-db-repair-exposure
 
 info:
   name: WordPress Database Repair Page Exposed
-  author: wprecon
+  author: ffx64
   severity: medium
   description: |
     The WordPress database repair page is accessible. If WP_ALLOW_REPAIR is defined

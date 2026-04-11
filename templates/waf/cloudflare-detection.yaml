@@ -2,6 +2,7 @@ id: waf-cloudflare-detection
 
 info:
   name: Cloudflare WAF Detection
+  author: ffx64
   description: Detects if target is protected by Cloudflare WAF
   severity: info
   tags:

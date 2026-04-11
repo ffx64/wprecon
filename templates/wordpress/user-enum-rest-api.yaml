@@ -2,6 +2,7 @@ id: wordpress-user-enumeration-rest-api
 
 info:
   name: WordPress User Enumeration via REST API
+  author: ffx64
   description: Enumerates WordPress users via REST API endpoint
   severity: medium
   tags:

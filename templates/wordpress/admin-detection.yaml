@@ -2,6 +2,7 @@ id: wordpress-admin-detection
 
 info:
   name: WordPress Admin Panel Detection
+  author: ffx64
   description: Detects WordPress admin panel at wp-admin
   severity: info
   tags:

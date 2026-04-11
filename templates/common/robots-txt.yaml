@@ -2,6 +2,7 @@ id: common-robots-txt
 
 info:
   name: Robots.txt Discovery
+  author: ffx64
   description: Discovers robots.txt and identifies paths
   severity: low
   tags:

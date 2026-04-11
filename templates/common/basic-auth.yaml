@@ -2,6 +2,7 @@ id: common-basic-auth
 
 info:
   name: Basic Authentication Detection
+  author: ffx64
   description: Detects HTTP Basic Authentication
   severity: low
   tags:

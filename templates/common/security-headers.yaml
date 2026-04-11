@@ -2,6 +2,7 @@ id: common-security-headers
 
 info:
   name: Security Headers Analysis
+  author: ffx64
   description: Checks for missing security headers
   severity: medium
   tags:

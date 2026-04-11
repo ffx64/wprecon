@@ -2,6 +2,7 @@ id: wordpress-htaccess-exposure
 
 info:
   name: WordPress .htaccess Exposure
+  author: ffx64
   description: Detects exposed .htaccess configuration file
   severity: medium
   tags:

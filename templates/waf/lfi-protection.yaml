@@ -2,6 +2,7 @@ id: waf-lfi-protection
 
 info:
   name: LFI Protection Detection
+  author: ffx64
   description: Detects WAF/Firewall Local File Inclusion protection
   severity: info
   tags:

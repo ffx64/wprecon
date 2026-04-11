@@ -2,7 +2,7 @@ id: wordpress-rss-feed-detection
 
 info:
   name: WordPress RSS/Atom Feed Detection
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     WordPress RSS and Atom feeds are accessible. These can leak post content,

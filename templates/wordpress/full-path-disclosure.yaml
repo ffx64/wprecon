@@ -2,7 +2,7 @@ id: wordpress-full-path-disclosure
 
 info:
   name: WordPress Full Path Disclosure
-  author: wprecon
+  author: ffx64
   severity: low
   description: |
     WordPress exposes the full server file path when certain internal files are accessed

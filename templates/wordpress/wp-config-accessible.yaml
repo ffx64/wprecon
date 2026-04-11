@@ -2,7 +2,7 @@ id: wordpress-wp-config-accessible
 
 info:
   name: WordPress wp-config.php Accessible
-  author: wprecon
+  author: ffx64
   severity: critical
   description: |
     The WordPress wp-config.php file or a variant is accessible and leaking

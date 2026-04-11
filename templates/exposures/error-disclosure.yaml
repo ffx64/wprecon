@@ -2,6 +2,7 @@ id: exposure-human-readable-errors
 
 info:
   name: Human Readable Errors
+  author: ffx64
   description: Detects sensitive information in error messages
   severity: medium
   tags:

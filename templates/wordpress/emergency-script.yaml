@@ -2,7 +2,7 @@ id: wordpress-emergency-script
 
 info:
   name: WordPress Emergency Password Reset Script
-  author: wprecon
+  author: ffx64
   severity: high
   description: |
     The WordPress emergency password reset script (emergency.php) is accessible.

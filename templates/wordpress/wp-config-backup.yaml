@@ -2,6 +2,7 @@ id: wordpress-wp-config-backup
 
 info:
   name: WordPress Config Backup Exposure
+  author: ffx64
   description: Detects exposed wp-config.php backup files
   severity: critical
   tags:

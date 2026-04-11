@@ -2,6 +2,7 @@ id: wordpress-plugin-brute-force
 
 info:
   name: WordPress Plugin Brute Force Detection
+  author: ffx64
   description: Attempts to brute force common WordPress plugins via common paths
   severity: medium
   tags:

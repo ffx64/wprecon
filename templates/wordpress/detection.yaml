@@ -2,6 +2,7 @@ id: wordpress-detection
 
 info:
   name: WordPress Installation Detection
+  author: ffx64
   description: Detects if target is running WordPress
   severity: info
   tags:

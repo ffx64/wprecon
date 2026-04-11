@@ -2,6 +2,7 @@ id: exposure-aws-s3-bucket
 
 info:
   name: AWS S3 Bucket Detection
+  author: ffx64
   description: Detects references to AWS S3 buckets in HTML/JavaScript
   severity: medium
   tags:

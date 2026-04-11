@@ -2,6 +2,7 @@ id: waf-rate-limiting-detection
 
 info:
   name: Rate Limiting / Throttling Detection
+  author: ffx64
   description: Detects rate limiting or throttling responses from WAF/Firewall
   severity: info
   tags:

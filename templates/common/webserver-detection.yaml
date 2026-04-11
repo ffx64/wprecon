@@ -2,6 +2,7 @@ id: common-webserver-detection
 
 info:
   name: Web Server Detection
+  author: ffx64
   description: Detects web server type and version from headers
   severity: info
   tags:

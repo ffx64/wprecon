@@ -2,7 +2,7 @@ id: wordpress-meta-generator
 
 info:
   name: WordPress Version via Meta Generator
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     The WordPress version is exposed via the meta generator tag in the HTML source.

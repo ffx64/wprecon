@@ -2,6 +2,7 @@ id: wordpress-plugins
 
 info:
   name: WordPress Popular Plugins Detection
+  author: ffx64
   description: Detects popular WordPress plugins
   severity: low
   tags:

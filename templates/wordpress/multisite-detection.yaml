@@ -2,7 +2,7 @@ id: wordpress-multisite-detection
 
 info:
   name: WordPress Multisite Detection
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     WordPress multisite (network) installation detected. Multisite environments

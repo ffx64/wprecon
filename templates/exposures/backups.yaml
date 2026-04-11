@@ -2,6 +2,7 @@ id: backups-exposure
 
 info:
   name: Common Backup Files Exposure
+  author: ffx64
   description: Detects common backup files
   severity: high
   tags:

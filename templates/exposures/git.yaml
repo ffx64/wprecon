@@ -2,6 +2,7 @@ id: git-exposure
 
 info:
   name: Git Repository Exposure
+  author: ffx64
   description: Detects exposed .git directory
   severity: high
   tags:

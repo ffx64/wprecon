@@ -2,7 +2,7 @@ id: wordpress-installer-log
 
 info:
   name: WordPress Duplicator Installer Log
-  author: wprecon
+  author: ffx64
   severity: medium
   description: |
     An installer log file from the Duplicator plugin is publicly accessible.

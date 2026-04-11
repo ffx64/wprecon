@@ -2,6 +2,7 @@ id: wordpress-popular-themes
 
 info:
   name: WordPress Popular Themes Detection
+  author: ffx64
   description: Detects popular WordPress themes by checking for specific files and version info
   severity: low
   tags:

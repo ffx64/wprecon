@@ -2,6 +2,7 @@ id: waf-xss-protection
 
 info:
   name: XSS Protection Detection
+  author: ffx64
   description: Detects WAF/Firewall XSS (Cross-Site Scripting) protection
   severity: info
   tags:

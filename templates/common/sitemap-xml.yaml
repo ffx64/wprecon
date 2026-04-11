@@ -2,6 +2,7 @@ id: common-sitemap-xml
 
 info:
   name: Sitemap.xml Discovery
+  author: ffx64
   description: Discovers sitemap.xml and enumerates URLs
   severity: low
   tags:

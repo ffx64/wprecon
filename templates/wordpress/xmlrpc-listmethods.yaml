@@ -2,7 +2,7 @@ id: wordpress-xmlrpc-listmethods
 
 info:
   name: WordPress XMLRPC List Methods
-  author: wprecon
+  author: ffx64
   severity: medium
   description: |
     The WordPress XMLRPC endpoint responds to system.listMethods calls, revealing

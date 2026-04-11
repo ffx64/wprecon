@@ -2,7 +2,7 @@ id: waf-sucuri-detection
 
 info:
   name: Sucuri WAF Detection
-  author: wprecon
+  author: ffx64
   severity: info
   description: |
     Detects the presence of Sucuri Web Application Firewall (CloudProxy)
